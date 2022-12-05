@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+(for PC)
+Makers
+
+{% load custom_filter %}
+
+<h3> Количество создателей: {{ makers|length }} </h3>
+
+{% comment %}
+      <h3> Количество создателей: {{ makers|length }} </h3>
+{% endcomment %}
+
+<!-- стандартный html комментарий не остановит выполнение кода-->
+<!-- {% if makers %} -->
+    <table> <!-- Начинаем описывать таблицу -->
+        <tr> <!-- Добавляем строку -->
+            <td>Name</td>
+            <td>Age</td>
+            <td>Register data</td>
+        </tr>
+
+        {% for maker in makers %}
+            <tr class="{% cycle 'blue' 'white' %}">
+                <td>{{ maker.name|censor }}</td>
+                <td>{{ maker.age }}</td>
+                <td>{{ maker.reg_date }}</td>
+            </tr>
+        {% endfor %}
+
+    </table> <!-- ... и таблицы -->
+{% endif %}
+
+</body>
+</html>
